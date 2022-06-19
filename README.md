@@ -8,50 +8,11 @@
 - See index.js, settings.json & event-...json
 - e.g. lambda-local -l index.js -t 9000 -e event-blockchain-query.json
 
-# CORE_PROTECT_KEY Categories
-{
-    "title": "Data Encryption",
-    "id": "1"
-},
-{
-    "title": "Access",
-    "id": "2"
-},
-{
-    "title": "Authorisation (Access Refresh)",
-    "id": "3"
-},
-{
-    "title": "Identity",
-    "id": "4"
-},
-{
-    "title": "Other",
-    "id": "5"
-},
-{
-    "title": "Blockchain Address",
-    "id": "6"
-},
-{
-    "title": "Blockchain Asset",
-    "id": "7"
-},
-{
-    "title": "Blockchain Pool",
-    "id": "8"
-},
-{
-    "title": "Blockchain Staking",
-    "id": "9"
-}
-
-
 # Setup
 
 BlockFrost As Service:
 
-mydigitalstructure.cloud.save(
+entityos.cloud.save(
 {
     object: 'core_url',
     data:
@@ -67,7 +28,7 @@ core_url mydigitstructure object id is 298, objectcontext is id of the URL (crea
 Category is Indentity [4].
 Use lambda-local -l index.js -t 9000 -e event-blockchain-key-categories.json to see category values.
 
-mydigitalstructure.cloud.save(
+entityos.cloud.save(
 {
     object: 'core_protect_key',
     data:
@@ -81,7 +42,7 @@ mydigitalstructure.cloud.save(
     }
 });
 
-mydigitalstructure.cloud.search(
+entityos.cloud.search(
 {
     object: 'core_protect_key',
     fields: ['title', 'object', 'objectcontext', 'category', 'type', 'key'],
@@ -91,7 +52,7 @@ mydigitalstructure.cloud.search(
 Create a link to back to URL (as Service) to hold the projectId.
 Category is Blockchain Address [6].
 
-mydigitalstructure.cloud.save(
+entityos.cloud.save(
 {
     object: 'core_protect_key',
     data:
@@ -105,7 +66,7 @@ mydigitalstructure.cloud.save(
     }
 });
 
-mydigitalstructure.cloud.search(
+entityos.cloud.search(
 {
     object: 'core_protect_key',
     fields: ['title', 'object', 'objectcontext', 'category', 'type', 'key'],

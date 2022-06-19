@@ -1,8 +1,8 @@
 {
-	"mydigitalstructure":
+	"entityos":
 	{
 		"hostname": "api.entityos.cloud", 
-		"logon": "example-learn@mydigitalstructure.cloud", 
+		"logon": "example-learn@entityos.cloud", 
 		"password": "",
 		"email": "team@entityos.cloud",
 		"testing": 

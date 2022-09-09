@@ -4,6 +4,10 @@
 - https://github.com/blockfrost/blockfrost-js
 - https://github.com/blockfrost/blockfrost-js/wiki/BlockFrostAPI.md
 
+# Lucid Library:
+Incorporting BlockFrost
+- https://www.npmjs.com/package/lucid-cardano
+
 # Usage
 - See index.js, settings.json & event-...json
 - e.g. lambda-local -l index.js -t 9000 -e event-blockchain-query.json

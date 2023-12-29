@@ -21,13 +21,13 @@
         "url": "https://github.com/ibcom-lab/entityos-blockchain.git"
     },
     "dependencies": {
-        "lodash": "*",
-        "moment": "^2.19.1",
+        "@blockfrost/blockfrost-js": "^5.5.0",
+        "@cardano-foundation/cardano-verify-datasignature": "^1.0.11",
         "entityos": "^2.1.7",
-        "@blockfrost/blockfrost-js":"^2.0.2"
+        "lodash": "*",
+        "moment": "^2.19.1"
     },
     "engines": {
         "node": "*"
     }
 }
-    

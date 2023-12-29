@@ -7,6 +7,7 @@
 
 	lambda-local -l index.js -t 9000 -e event-blockchain-query.json
 	lambda-local -l index.js -t 9000 -e event-blockchain-key-categories.json
+	lambda-local -l index.js -t 9000 -e event-util-verify-data.json
 
 	Setup:
 	See README.md
@@ -294,6 +295,27 @@ exports.handler = function (event, context, callback)
 			code: function (data)
 			{
 				entityos.invoke('util-end', data)
+			}
+		});
+
+		entityos.add(
+		{
+			name: 'util-verify-data',
+			code: function (data)
+			{
+				var event = entityos.get({scope: '_event'});
+				const verifyDataSignature = require('@cardano-foundation/cardano-verify-datasignature');
+
+				//console.log(verifyDataSignature(signature, key));
+				//console.log(verifyDataSignature(signature, key, message));
+				var dataVerified = verifyDataSignature(
+						event.verify.signature,
+						event.verify.key,
+						event.verify.dataToVerify,
+						event.verify.stakeAddress
+				);
+
+				entityos.invoke('util-end', {dataVerified: dataVerified})
 			}
 		});
 		

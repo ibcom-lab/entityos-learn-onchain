@@ -77,7 +77,7 @@ entityos.cloud.search(
     filters: [{field: 'category', comparision: 'EQUAL_TO', value: 6}]
 });
 
-## Cardano Foundation NodeJS Library:
+# Cardano Foundation NodeJS Library:
 
 https://www.npmjs.com/package/@cardano-foundation/cardano-verify-datasignature
 
@@ -94,5 +94,15 @@ const address = 'stake1u9ehkflqclys20wylg8hxe90atr7hn8jmnzlj3f27hdm3hqwfw72q';
 console.log(verifyDataSignature(signature, key)); // true
 console.log(verifyDataSignature(signature, key, message)); // true
 console.log(verifyDataSignature(signature, key, message, address)); // true
+
+# Create Cardano Address
+BrowserJS or NodeJS
+- Using Memnomic
+
+Libs:
+- Cardano-Serialisation
+- typhons
+
+
 
 

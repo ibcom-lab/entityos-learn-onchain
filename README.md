@@ -101,7 +101,9 @@ BrowserJS or NodeJS
 
 Libs:
 - Cardano-Serialisation
-- typhons
+- typhonjs
+
+
 
 
 

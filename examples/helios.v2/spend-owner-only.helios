@@ -1,0 +1,9 @@
+spending owner_only
+
+import { tx } from ScriptContext
+
+const OWNER = PubKeyHash::new(#)
+
+func main(_, _) -> Bool {
+    tx.is_signed_by(OWNER)
+}

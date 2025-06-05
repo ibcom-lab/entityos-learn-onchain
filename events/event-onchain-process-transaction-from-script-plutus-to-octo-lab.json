@@ -1,0 +1,20 @@
+{
+	"description": "Send lovelace (2 Ada) FROM 'Hello Octo' plutus script TO Octo account.",
+    "site": "selfdriven-lab",
+    "namespace": "process",
+    "controller": "onchain-process-transaction-script",
+	"scriptaddress": "addr1z9qpkn7evyxyvx9x2nkf8wfslm6k36k97qytk4mewj0h9s6wds65prfvskt37wz99t5yks9vdgxxzk2djtu9rnggvjmsmww5t9",
+	"sendamountlovelace": "2000000",
+	"sendfirstutxo": false,
+	"recieveraddress": "addr1q98xcd2q35kgt9cl8pzj46ztgzkx5rrpt9xe97z3e5yxfdlrm5zhvgxwkfc0zwdywruts8waa4nkkh3x24z9taqhhqtsqrucn3",
+	"script": {
+		"type": "PlutusV2",
+		"script": "581c581a01000022233225333573466e1c00400852616375a0066eb40081"
+	},
+	"redeemer": "42",
+	"redeemercborhex": "d8799f4a48656c6c6f204f63746fff",
+	"datumcborhex": "182a",
+	"usefirstutxo": false,
+	"usescript": false,
+	"submit": false
+}	

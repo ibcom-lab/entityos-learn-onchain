@@ -1,0 +1,34 @@
+{
+	"description": "build always true validator.",
+	"site": "selfdriven-lab",
+	"namespace": "process.helios.v2",
+	"controller": "onchain-process-helios-v2-generate-validator",
+	"programs": [
+		{
+			"filename": "examples/helios.v2/always-true.helios",
+			"generate": false
+		},
+		{
+			"filename": "examples/helios.v2/redeemer_equals_datum.helios",
+			"generate": false
+		},
+		{
+			"filename": "examples/helios.v2/spend-owner-only.helios",
+			"generate": false,
+			"parameters": [
+				{
+					"name": "OWNER",
+					"function": "makePubKeyHash",
+					"value": "4e6c35408d2c85971f38452ae84b40ac6a0c61594d92f851cd0864b7"
+				}
+			]
+		},
+		{
+			"filename": "examples/helios.v2/spend-owner-only-using-tag.helios",
+			"generate": true,
+			"tags": {
+				"owner": "4e6c35408d2c85971f38452ae84b40ac6a0c61594d92f851cd0864b7"
+			}
+		}
+	]
+}

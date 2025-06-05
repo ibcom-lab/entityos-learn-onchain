@@ -1,0 +1,7 @@
+{
+	"description": "build always true validator.",
+    "site": "selfdriven-lab",
+    "namespace": "process.helios",
+	"controller": "onchain-process-helios-v1-generate-validator",
+	"filename": "examples/always-true-v1.helios"
+}	

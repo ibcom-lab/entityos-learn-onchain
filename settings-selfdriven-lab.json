@@ -1,0 +1,97 @@
+{
+	"entityos": {
+		"hostname": "api.entityos.cloud",
+		"logon": "",
+		"email": "",
+		"testing": {
+			"status": "true",
+			"showData": "true",
+			"break": "-"
+		},
+		"convert": "true"
+	},
+	"protect": {
+		"notes": "Custodial keys for encryption/decryption and signing of data."
+	},
+	"onchain": {
+		"cardano": {
+			"blockfrost": {
+				"uri": "https://blockfrost.io"
+			},
+			"maestro": {
+				"apiKey": ""
+			},
+			"assets": {
+				"sda": {
+					"label": "18300",
+					"policyID": "14302595916298c0ba104801034dbc784d1ece283c943dfab0524d0d"
+				}
+			},
+			"custodian": {
+				"addresses": {
+					"transaction": "",
+					"account": ""
+				},
+				"assetName": "",
+				"policy": {
+					"type": "all",
+					"scripts": [
+						{
+							"type": "sig",
+							"keyHash": "{{pubkeyhash}}"
+						}
+					]
+				},
+				"policyID": "a148d31a6eb4e2bb62133e204804931868cf4beb6e1a407a9e3efe99",
+				"metadataLabel": 18300,
+				"metadataLabelName": "SDA",
+				"includeSubjectSkill": true,
+				"includeSubjectID": true
+			},
+			"inputsminimumlovelace": "10000000"
+		}
+	},
+	"platform": {
+		"actionTypes": {
+			"achievement": ""
+		}
+	},
+	"rules": [
+		{
+			"env": "password-lab",
+			"set": "entityos.password"
+		},
+		{
+			"env": "keyLeVUhtcr5uEfoEfp-lab",
+			"set": "protect.key"
+		},
+		{
+			"env": "ivmeXcO9yL21O8f1JT-lab",
+			"set": "protect.iv"
+		},
+		{
+			"env": "prvkeyhexMxsgP9vMHe5YSSex-lab",
+			"set": "protect.sign.privateKeyHex"
+		},
+		{
+			"env": "pubkeyhexY7YFBxrxAQzEvWVg-lab",
+			"set": "protect.sign.publicKeyHex"
+		},
+		{
+			"env": "keyidKpZYMY57LcjaTeGp-lab",
+			"set": "protect.sign.keyID"
+		},
+		{
+			"env": "octoentropyjKWgCl2jkQJbG0NFa4-lab",
+			"set": "onchain.cardano.custodian.entropy"
+		},
+		{
+			"env": "octomnemonicGcK2rKhpOHLSHUrh-lab",
+			"set": "onchain.cardano.custodian.mnemonic"
+		},
+		{
+			"env": "octopubkeyhashjKWgCl2jkQJbG0NFa4-lab",
+			"set": "onchain.cardano.custodian.pubkeyhash"
+		}
+	]
+}

@@ -1,0 +1,6 @@
+{
+    "site": "selfdriven-lab",
+    "namespace": "process",
+    "controller": "onchain-process-util-redeemer-generate",
+	"redeemerdata": "Hello Octo"
+}	

@@ -1,0 +1,5 @@
+spending redeemer_equals_datum
+
+func main(datum: Int, redeemer: Int) -> () {
+    assert(redeemer == datum, "redeemer not equal to datum")
+}

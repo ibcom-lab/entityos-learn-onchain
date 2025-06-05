@@ -1,0 +1,11 @@
+{
+	"site": "selfdriven-lab",
+	"namespace": "process",
+	"controller": "onchain-process-generate-script-plutus-address",
+	"description": "always-true",
+	"script": {
+		"type": "PlutusV2",
+		"script": "581c581a01000022233225333573466e1c00400852616375a0066eb40081"
+	},
+	"staking": true
+}

@@ -1,19 +1,81 @@
 /*
 	See:
-	https://learn.entityos.cloud/learn-function-automation
+	https://learn-next.entityos.cloud/learn-function-automation
 
 	This is node app to automate tasks
 	https://www.npmjs.com/package/lambda-local:
 
-	lambda-local -l index.js -t 9000 -e event-blockchain-query.json
-	lambda-local -l index.js -t 9000 -e event-blockchain-key-categories.json
-	lambda-local -l index.js -t 9000 -e event-util-verify-data.json
+	prod:
+	lambda-local -l index.js -t 9000 -e events/event-onchain-query.json
+	lambda-local -l index.js -t 9000 -e events/event-onchain-query-with-address.json
+	lambda-local -l index.js -t 9000 -e events/event-onchain-key-categories.json
+	lambda-local -l index.js -t 9000 -e events/event-onchain-query-with-metadata-label.json
+	lambda-local -l index.js -t 9000 -e events/event-onchain-query-assets-by-policy.json
+	lambda-local -l index.js -t 9000 -e events/event-onchain-query-with-metadata-label-sda.json
+	lambda-local -l index.js -t 9000 -e events/event-onchain-query-account.json
+	lambda-local -l index.js -t 9000 -e events/event-onchain-query-account-assets.json
+	lambda-local -l index.js -t 9000 -e events/event-onchain-query-assets.json
+
+	lambda-local -l index.js -t 9000 -e events/event-onchain-transaction-create-skill-sources.json
+	lambda-local -l index.js -t 9000 -e events/event-onchain-transaction-create-skill-domains.json
+	lambda-local -l index.js -t 9000 -e events/event-onchain-transaction-create-skill-levels.json
+	lambda-local -l index.js -t 9000 -e events/event-onchain-transaction-create-skill-capacities.json
+	lambda-local -l index.js -t 9000 -e events/event-onchain-transaction-prepare-skills.json
+	lambda-local -l index.js -t 9000 -e events/event-onchain-process-get-keys.json
+	lambda-local -l index.js -t 9000 -e events/event-onchain-process-transaction.json
+	lambda-local -l index.js -t 9000 -e events/event-onchain-process-oncloud-ssi-verifiable-credentials.json
+
+	lab:
+	lambda-local -l index.js -t 9000 -e events/event-onchain-process-oncloud-actions-lab.json // issue if actions are linked to teamonly project -- octo can't see them.
+	lambda-local -l index.js -t 9000 -e events/event-onchain-process-oncloud-ssi-verifiable-credentials-lab.json
+
+	lambda-local -l index.js -t 9000 -e events/event-onchain-process-transaction-lab.json
+	lambda-local -l index.js -t 9000 -e events/event-onchain-process-transaction-from-octo-to-account-lab.json
+	lambda-local -l index.js -t 9000 -e events/event-onchain-process-transaction-from-octo-to-script-lab.json
+	lambda-local -l index.js -t 9000 -e events/event-onchain-process-transaction-from-account-to-octo-lab.json
+	
+	lambda-local -l index.js -t 9000 -e events/event-onchain-process-transaction-mint-lab.json
+	lambda-local -l index.js -t 9000 -e events/event-onchain-process-transaction-hash-lab.json
+
+	lambda-local -l index.js -t 9000 -e events/event-onchain-process-get-keys-lab.json
+	lambda-local -l index.js -t 9000 -e events/event-onchain-process-get-keys-account-lab.json
+
+	lambda-local -l index.js -t 9000 -e events/event-onchain-process-generate-script-address-lab.json
+	lambda-local -l index.js -t 9000 -e events/event-onchain-process-get-script-address-utxos-lab.json
+
+	lambda-local -l index.js -t 9000 -e events/event-onchain-process-generate-script-plutus-address-lab.json
+
+	lambda-local -l index.js -t 9000 -e events/event-onchain-process-transaction-from-script-to-octo-lab.json
+	lambda-local -l index.js -t 9000 -e events/event-onchain-process-transaction-witness-sign-lab.json
+	lambda-local -l index.js -t 9000 -e events/event-onchain-process-transaction-from-script-to-octo-with-witnesses-lab.json
+
+	lambda-local -l index.js -t 9000 -e events/event-onchain-process-transaction-from-octo-to-script-plutus-lab.json
+	lambda-local -l index.js -t 9000 -e events/event-onchain-process-transaction-from-script-plutus-to-octo-lab.json
+
+	lambda-local -l index.js -t 9000 -e events/event-onchain-process-util-cbor-decode.json
+	lambda-local -l index.js -t 9000 -e events/event-onchain-process-util-datum-generate.json
+	lambda-local -l index.js -t 9000 -e events/event-onchain-process-util-datum-verify.json
+	lambda-local -l index.js -t 9000 -e events/event-onchain-process-util-address-details.json
+
+	lambda-local -l index.js -t 9000 -e events/event-onchain-process-util-redeemer-generate.json
+
+	lambda-local -l index.js -t 9000 -e events/event-onchain-process-helios-v2-generate-validator-lab.json
 
 	Setup:
 	See README.md
 
-	BlockFrost API:
-	https://github.com/blockfrost/blockfrost-js/wiki/BlockFrostAPI.md
+	Methods:
+		onchain-query
+		onchain-protect-key-categories
+		onchain-query-addresses
+		onchain-protect-key-identites
+		onchain-protect-key-addresses
+		util-verify-data
+
+	zip -r ../selfdriven-onchain-DDMMMYYYY-n.zip *
+
+	lab address:
+	addr1q98ztnjfnwzyzakpcany4n60s76jy58k9hdde4sl68jyahexj04qy6cdqd5yktnvkytplxppw8a30tm0cu84kq8nymgssw53ld
 */
 
 exports.handler = function (event, context, callback)
@@ -27,7 +89,7 @@ exports.handler = function (event, context, callback)
 		value: event
 	});
 
-	//Event: {"site": "default"}
+	//Event: {"site": "0000"}
 
 	entityos.set(
 	{
@@ -56,14 +118,15 @@ exports.handler = function (event, context, callback)
 		}
 	}
 
-	entityos._util.message(
+	/*entityos._util.message(
 	[
 		'-',
 		'EVENT-SETTINGS:',
 		settings
-	]);
+	]);*/
 
-	entityos.init(main, settings)
+	entityos.init(main, settings);
+	
 	entityos._util.message('Using entityos module version ' + entityos.VERSION);
 	
 	function main(err, data)
@@ -71,15 +134,25 @@ exports.handler = function (event, context, callback)
 		var settings = entityos.get({scope: '_settings'});
 		var event = entityos.get({scope: '_event'});
 
-		entityos._util.message(
+		/*entityos._util.message(
 		[
 			'-',
 			'SETTINGS:',
 			settings
-		]);
+		]);*/
 
-		var namespace = settings.blockchain.namespace;
+		var namespace;
+		
+		if (_.has(settings, 'blockchain.namespace'))
+		{
+			namespace = settings.blockchain.namespace;
+		}
 
+		if (_.has(settings, 'onchain.namespace'))
+		{
+			namespace = settings.onchain.namespace;
+		}
+	
 		if (event.namespace != undefined)
 		{
 			namespace = event.namespace;
@@ -94,26 +167,26 @@ exports.handler = function (event, context, callback)
 				namespace
 			]);
 
-			var blockchainfactory = require('blockchainfactory/blockchainfactory.' + namespace + '.js');
+			var onchainfactory = require('onchainfactory/onchainfactory.' + namespace + '.js');
 		}
 
-		if (_.has(blockchainfactory, 'init'))
+		if (_.has(onchainfactory, 'init'))
 		{
-			blockchainfactory.init();
+			onchainfactory.init();
 		}
 
 		entityos.add(
 		{
-			name: 'blockchain-query',
+			name: 'onchain-query',
 			code: function ()
 			{
-				entityos.invoke('blockchain-protect-key-categories');
+				entityos.invoke('onchain-protect-key-categories');
 			}
 		});
 
 		entityos.add(
 		{
-			name: 'blockchain-protect-key-categories',
+			name: 'onchain-protect-key-categories',
 			code: function (param, response)
 			{
 				if (response == undefined)
@@ -123,7 +196,7 @@ exports.handler = function (event, context, callback)
 						object: 'setup_core_protect_key_category',
 						fields: [{name:'title'}],
 						rows: 9999,
-						callback: 'blockchain-protect-key-categories',
+						callback: 'onchain-protect-key-categories',
 						callbackParam: param
 					});
 				}
@@ -134,19 +207,19 @@ exports.handler = function (event, context, callback)
 
 					entityos.set(
 					{
-						scope: 'blockchain',
+						scope: 'onchain',
 						context: 'protect-key-categories',
 						value: keyCategories
 					});
 
-					entityos.invoke('blockchain-query-addresses')
+					entityos.invoke('onchain-query-addresses')
 				}
 			}
 		});
 
 		entityos.add(
 		{
-			name: 'blockchain-query-addresses',
+			name: 'onchain-query-addresses',
 			code: function ()
 			{
 				var event = entityos.get({scope: '_event'});
@@ -160,23 +233,23 @@ exports.handler = function (event, context, callback)
 						value: [event.address]
 					});
 
-					entityos.invoke('blockchain-protect-key-identites');
+					entityos.invoke('onchain-protect-key-identites');
 				}
 				else
 				{
-					entityos.invoke('blockchain-protect-key-addresses');
+					entityos.invoke('onchain-protect-key-addresses');
 				}
 			}
 		});
 
 		entityos.add(
 		{
-			name: 'blockchain-protect-key-addresses',
+			name: 'onchain-protect-key-addresses',
 			code: function (param, response)
 			{
 				var keyCategories = entityos.get(
 				{
-					scope: 'blockchain',
+					scope: 'onchain',
 					context: 'protect-key-categories'
 				});
 
@@ -195,7 +268,7 @@ exports.handler = function (event, context, callback)
 							}
 						],
 						rows: 9999,
-						callback: 'blockchain-protect-key-addresses'
+						callback: 'onchain-protect-key-addresses'
 					});
 				}
 				else
@@ -208,19 +281,19 @@ exports.handler = function (event, context, callback)
 					});
 
 					console.log(addresses)
-					entityos.invoke('blockchain-protect-key-identites');
+					entityos.invoke('onchain-protect-key-identites');
 				}
 			}
 		});
 
 		entityos.add(
 		{
-			name: 'blockchain-protect-key-identites',
+			name: 'onchain-protect-key-identites',
 			code: function (param, response)
 			{
 				var keyCategories = entityos.get(
 				{
-					scope: 'blockchain',
+					scope: 'onchain',
 					context: 'protect-key-categories'
 				});
 
@@ -239,14 +312,14 @@ exports.handler = function (event, context, callback)
 							}
 						],
 						rows: 9999,
-						callback: 'blockchain-protect-key-identites'
+						callback: 'onchain-protect-key-identites'
 					});
 				}
 				else
 				{
 					var identites = entityos.set(
 					{
-						scope: 'blockchain',
+						scope: 'onchain',
 						context: 'identites',
 						value: response.data.rows
 					});
@@ -265,14 +338,14 @@ exports.handler = function (event, context, callback)
 						});
 					}
 
-					entityos.invoke('blockchain-query-process');
+					entityos.invoke('onchain-query-process');
 				}
 			}
 		});
 
 		entityos.add(
 		{
-			name: 'blockchain-query-process',
+			name: 'onchain-query-process',
 			code: function ()
 			{
 				var event = entityos.get({scope: '_event'});
@@ -281,17 +354,17 @@ exports.handler = function (event, context, callback)
 
 				if (event.processComplete == undefined)
 				{
-					event.processComplete = 'blockchain-query-complete'
+					event.processComplete = 'onchain-query-complete'
 				}
 
 				// See /blockchainfactory
-				entityos.invoke('blockchain-blockfrost-query')
+				entityos.invoke('onchain-blockfrost-query')
 			}
 		});
 
 		entityos.add(
 		{
-			name: 'blockchain-query-complete',
+			name: 'onchain-query-complete',
 			code: function (data)
 			{
 				entityos.invoke('util-end', data)
@@ -348,6 +421,155 @@ exports.handler = function (event, context, callback)
 				{
 					callback(error, data);
 				}
+			}
+		});
+
+		entityos.add(
+		{
+			name: 'util-get-from-file',
+			code: function (param)
+			{
+				var filename = entityos._util.param.get(param, 'filename').value;
+
+				if (filename == undefined)
+				{
+					console.log('No filename.')
+				}
+				else
+				{
+					var fs = require('fs');
+
+					fs.readFile(filename, function (err, buffer)
+					{
+						if (!err)
+						{	
+							var fileData = buffer.toString();
+
+							if (_.includes(filename, '.json'))
+							{
+								fileData = JSON.parse(fileData);
+							}
+
+							param = entityos._util.param.set(param, 'fileData', fileData);
+
+							entityos._util.onComplete(param);
+						}
+						else
+						{
+							console.log('ERROR! Could not read the file: ' + event.filename)
+						}
+					});
+				}
+			}
+		});
+
+		entityos.add(
+		{
+			name: 'util-save-to-file',
+			code: function (param, data)
+			{
+				var event = entityos.get({scope: '_event'});
+				var filename = entityos._util.param.get(param, 'filename', {default: 'data.json'}).value;
+				var scope = entityos._util.param.get(param, 'scope', {default: 'util-save-to-file'}).value;
+				var fileData = entityos._util.param.get(param, 'fileData').value;
+				var saveAsJSON = entityos._util.param.get(param, 'saveAsJSON', {default: true}).value;
+				
+				if (fileData == undefined)
+				{
+					fileData = entityos.get({scope: scope})
+				}
+
+				if (fileData != undefined)
+				{
+					const fs = require('fs');
+
+					var fileDataSave = fileData;
+					
+					if (saveAsJSON)
+					{
+						try
+						{
+							fileDataSave = JSON.stringify(fileDataSave, null, 4);
+						}
+						catch (error) {}
+					}
+
+					try
+					{
+						fs.writeFileSync(filename, fileDataSave);
+						entityos._util.onComplete(param);
+					}
+					catch (error)
+					{
+						console.error(error);
+						entityos._util.onComplete(param);
+					}
+				}
+			}
+		});
+
+		entityos.add(
+		{
+			name: 'util-text-to-hex',
+			code: function (param)
+			{
+				var textUTF8 = entityos._util.param.get(param, 'text').value;
+
+				const bufferText = Buffer.from(textUTF8, 'utf8');
+				const textHex = bufferText.toString('hex');
+
+				return textHex;
+			}
+		});
+
+		entityos.add(
+		{
+			name: 'util-text-replace-all',
+			code: function (param)
+			{
+				var text = entityos._util.param.get(param, 'text').value;
+				var replaceText = entityos._util.param.get(param, 'replaceText').value;
+				var withText = entityos._util.param.get(param, 'withText').value;
+
+				var replacedTexted = text;
+
+				if (text != undefined)
+				{
+					replacedTexted = text.replace(new RegExp(replaceText, 'g'), withText);
+				}
+
+				return replacedTexted;
+			}
+		});
+
+		entityos.add(
+		{
+			name: 'util-as-object',
+			code: function (param)
+			{
+				var reference = entityos._util.param.get(param, 'reference').value;
+				var rootObject = entityos._util.param.get(param, 'rootObject').value;
+
+				if (reference == undefined || reference == '')
+				{
+					referenceAsObject = undefined;
+				}
+				else
+				{
+					if (rootObject == undefined) {rootObject = {}}
+					
+					var referenceAsObject = rootObject;
+
+					var _reference = (reference).split('.');
+
+					_.each(_reference, function(ref)
+					{
+						referenceAsObject = referenceAsObject[ref];	
+					});
+						
+				}	
+
+				return referenceAsObject;
 			}
 		});
 
